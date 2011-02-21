@@ -28,7 +28,6 @@ LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS="
-    wxDC [[ description = [ Use wxDC to perform zooming (experimental) ] ]]
     wxGraphicsContext [[ description = [ Use wxGraphicsContext for rendering (experimental) ] ]]
     wxOverlay [[ description = [ Use wxOverlay (experimental) ] ]]
 "
@@ -45,8 +44,7 @@ DEPENDENCIES="
 
 BUGS_TO="<calchan@gentoo.org>"
 
-CMAKE_SRC_CONFIGURE_OPTIONS=( 'wxDC USE_WX_ZOOM' 'wxGraphicsContext USE_WX_GRAPHICS_CONTEXT'
-    'wxOverlay USE_WX_OVERLAY' )
+CMAKE_SRC_CONFIGURE_OPTIONS=( 'wxGraphicsContext USE_WX_GRAPHICS_CONTEXT' 'wxOverlay USE_WX_OVERLAY' )
 CMAKE_SRC_CONFIGURE_PARAMS=( '-DKICAD_GOST=OFF' '-DKICAD_KEEPCASE=ON' '-DKICAD_MINIZIP=OFF'
     '-DUSE_BOOST_POLYGON_LIBRARY=ON' '-DwxUSE_UNICODE=ON')
 
