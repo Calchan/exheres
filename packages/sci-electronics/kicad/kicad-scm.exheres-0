@@ -5,7 +5,6 @@
 
 SCM_REPOSITORY="http://bazaar.launchpad.net/~kicad-testing-committers/kicad"
 SCM_BRANCH="testing"
-SCM_ACTUAL_REVISION="2695"
 SCM_lib_REPOSITORY="http://bazaar.launchpad.net/~kicad-lib-committers/kicad"
 SCM_lib_BRANCH="library"
 SCM_lib_UNPACK_TO="${WORKBASE}/${PNV}/lib"
