@@ -5,13 +5,13 @@
 
 SCM_REPOSITORY="http://bazaar.launchpad.net/~kicad-testing-committers/kicad"
 SCM_BRANCH="testing"
-SCM_lib_REPOSITORY="http://bazaar.launchpad.net/~kicad-lib-committers/kicad"
-SCM_lib_BRANCH="library"
-SCM_lib_UNPACK_TO="${WORKBASE}/${PNV}/lib"
-SCM_doc_REPOSITORY="http://bazaar.launchpad.net/~kicad-developers/kicad"
-SCM_doc_BRANCH="doc"
-SCM_doc_UNPACK_TO="${WORKBASE}/${PNV}/doc"
-SCM_SECONDARY_REPOSITORIES="lib doc"
+SCM_kicad_lib_REPOSITORY="http://bazaar.launchpad.net/~kicad-lib-committers/kicad"
+SCM_kicad_lib_BRANCH="library"
+SCM_kicad_lib_UNPACK_TO="${WORKBASE}/${PNV}/lib"
+SCM_kicad_doc_REPOSITORY="http://bazaar.launchpad.net/~kicad-developers/kicad"
+SCM_kicad_doc_BRANCH="doc"
+SCM_kicad_doc_UNPACK_TO="${WORKBASE}/${PNV}/doc"
+SCM_SECONDARY_REPOSITORIES="kicad_lib kicad_doc"
 
 require scm-bzr cmake
 
