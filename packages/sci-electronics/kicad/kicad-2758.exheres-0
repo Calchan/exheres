@@ -1,0 +1,13 @@
+# Copyright 2011 Denis Dupeyron <calchan@gentoo.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require kicad
+
+PLATFORMS="~amd64"
+
+MYOPTIONS+="
+    wxDC [[ description = [ Use wxDC to perform zooming (experimental) ] ]]
+"
+
+CMAKE_SRC_CONFIGURE_OPTIONS+=( 'wxDC USE_WX_ZOOM' )
+
