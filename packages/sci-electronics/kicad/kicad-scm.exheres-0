@@ -6,6 +6,8 @@ require kicad
 PLATFORMS="~amd64"
 
 MYOPTIONS+="
-    wxOverlay [[ description = [ Use wxOverlay (experimental and buggy) ] ]]
+    wxOverlay [[ description = [ Build with wxOverlay (experimental and buggy) ] ]]
 "
+
+CMAKE_SRC_CONFIGURE_OPTIONS+=( 'wxOverlay USE_WX_OVERLAY' )
 
