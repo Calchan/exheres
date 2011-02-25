@@ -3,8 +3,6 @@
 # Based in part upon 'kicad-99999999' from Gentoo (same author), which is:
 #     Copyright 1999-2010 Gentoo Foundation
 
-SCM_NO_AUTOMATIC_FINALISE=1
-
 if ever is_scm; then
     SCM_REPOSITORY="http://bazaar.launchpad.net/~kicad-testing-committers/kicad"
     SCM_BRANCH="testing"
@@ -23,7 +21,7 @@ SCM_SECONDARY_REPOSITORIES="kicad_lib kicad_doc"
 
 require scm-bzr cmake
 
-export_exlib_phases src_fetch_extra src_unpack src_prepare src_compile src_install
+export_exlib_phases src_unpack src_prepare src_compile src_install
 
 SUMMARY="Kicad GPL PCB suite"
 DESCRIPTION="
@@ -65,7 +63,6 @@ kicad_get_rev_before_date() {
     [[ ${#} -eq 2 ]] || die "kicad_get_rev_before_date needs exactly two arguments"
 
     SCM_THIS="${1}"
-    scm_check_vars
     revision=$(nonfatal scm-bzr_bzr log "$(scm-bzr_local_branch)" -r "date:${2}" --long | \
         grep '^revno: ' | cut -d ' ' -f 2)
     if [[ ${revision} == "" ]]; then
@@ -77,15 +74,7 @@ kicad_get_rev_before_date() {
 }
 
 
-kicad_src_fetch_extra() {
-    scm_finalise
-    scm_src_fetch_extra
-}
-
-
 kicad_src_unpack() {
-    scm_check_vars
-
     if ! ever is_scm; then
         local release_date=$(scm-bzr_bzr log "$(scm-bzr_local_branch)" -c "${PV}" --timezone local \
          --long | grep '^timestamp: ' | cut -d ' ' -f 3-4 | tr ' ' ,)
@@ -94,8 +83,6 @@ kicad_src_unpack() {
             scm_set_var REVISION $(kicad_get_rev_before_date "${SCM_THIS}" "${release_date}")
         done
     fi
-
-    scm_finalise
     scm_src_unpack
 }
 
