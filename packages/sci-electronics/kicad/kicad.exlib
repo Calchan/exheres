@@ -77,12 +77,13 @@ kicad_get_rev_before_date() {
 kicad_src_unpack() {
     if ! ever is_scm; then
         local release_date=$(scm-bzr_bzr log "$(scm-bzr_local_branch)" -c "${PV}" --timezone local \
-         --long | grep '^timestamp: ' | cut -d ' ' -f 3-4 | tr ' ' ,)
+             --long | grep '^timestamp: ' | cut -d ' ' -f 3-4 | tr ' ' ,)
 
         for SCM_THIS in ${SCM_SECONDARY_REPOSITORIES}; do
             scm_set_var REVISION $(kicad_get_rev_before_date "${SCM_THIS}" "${release_date}")
         done
     fi
+
     scm_src_unpack
 }
 
