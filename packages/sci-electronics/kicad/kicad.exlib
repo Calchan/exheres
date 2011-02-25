@@ -35,8 +35,6 @@ LICENCES="GPL-2"
 SLOT="0"
 MYOPTIONS="
     doc [[ description = [ Build doxygen documentation ] ]]
-    wxGraphicsContext [[ description = [ Use wxGraphicsContext for rendering (experimental) ] ]]
-    wxOverlay [[ description = [ Use wxOverlay (experimental) ] ]]
 "
 
 DEPENDENCIES="

@@ -5,3 +5,7 @@ require kicad
 
 PLATFORMS="~amd64"
 
+MYOPTIONS+="
+    wxOverlay [[ description = [ Use wxOverlay (experimental and buggy) ] ]]
+"
+
