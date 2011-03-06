@@ -23,7 +23,7 @@ DEPENDENCIES="
 BUGS_TO="calchan@gentoo.org"
 
 src_prepare() {
-    edo sed -e '/^CFLAGS=/d' -i Makefile.am
+    edo sed -e '/^CFLAGS=/d' -e 's/^man_/man1_/' -i Makefile.am
     edo sed -e 's/getline/mygetline/g' -i dialog.c
     eautoreconf
 }
