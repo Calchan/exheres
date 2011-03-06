@@ -1,0 +1,29 @@
+# Copyright 2011 Denis Dupeyron <calchan@gentoo.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.11 ] ]
+
+SUMMARY="VINT release of the graphing and plotting application for X-Windows"
+HOMEPAGE="http://www.isi.edu/nsnam/xgraph"
+DOWNLOADS="http://www.isi.edu/nsnam/dist/${PNV}.tar.gz"
+
+LICENCES="as-is"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+        sys-apps/gawk
+        sys-apps/sed
+    build+run:
+        x11-libs/libX11
+"
+
+BUGS_TO="calchan@gentoo.org"
+
+src_prepare() {
+    edo sed -e '/^CFLAGS=/d' -i Makefile.am
+    edo sed -e 's/getline/mygetline/g' -i dialog.c
+    eautoreconf
+}
