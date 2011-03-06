@@ -1,0 +1,52 @@
+# Copyright 2011 Denis Dupeyron <calchan@gentoo.org>
+# Distributed under the terms of the GNU General Public License v2
+# Based in part upon 'homebank-4.3.ebuild' (same author) from Gentoo, which is:
+#     Copyright 1999-2010 Gentoo Foundation
+
+require freedesktop-desktop freedesktop-mime gtk-icon-cache
+
+SUMMARY="Free, easy, personal accounting for everyone"
+HOMEPAGE="http://homebank.free.fr"
+DOWNLOADS="http://homebank.free.fr/public/${PNV}.tar.gz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="ofx"
+
+DEPENDENCIES="
+    build:
+        dev-util/intltool
+        dev-util/pkg-config[>=0.9]
+    build+run:
+        dev-libs/glib:2[>=2.24]
+        x11-libs/gtk+:2[>=2.20]
+        ofx? ( finance/libofx[>=0.7] )
+    run:
+        gnome-desktop/librsvg
+"
+
+BUGS_TO="calchan@gentoo.org"
+
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( ofx )
+
+src_prepare() {
+    # This fix was reported upstream
+    edo echo -e "src/da_encoding.c\nsrc/hb_transaction.c" >> po/POTFILES.in
+}
+
+pkg_preinst() {
+    gtk-icon-cache_pkg_preinst
+}
+
+pkg_postinst() {
+    freedesktop-desktop_pkg_postinst
+    freedesktop-mime_pkg_postinst
+    gtk-icon-cache_pkg_postinst
+}
+
+pkg_postrm() {
+    gtk-icon-cache_pkg_postrm
+    freedesktop-mime_pkg_postrm
+    freedesktop-desktop_pkg_postrm
+}
